@@ -86,7 +86,7 @@ header h2 {
 
 #container {
   background: white;
-  min-height: 595px;
+  min-height: 550px;
 }
 
 .inner {
@@ -312,7 +312,7 @@ dl dt {
 
 div.footer {
   font-size: 12px;
-  text-align: right;
+  text-align: center;
   color: #aaa;
 }
 
