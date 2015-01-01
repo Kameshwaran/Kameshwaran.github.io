@@ -400,3 +400,16 @@ a.blog-link{
 .outer-box{
   margin-bottom: 30px;
 }
+
+.home-btn{
+  text-decoration: none;
+}
+
+a.home-btn:hover {
+  text-decoration: none;
+  padding: 10px;
+  background-color: #d5000d;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
