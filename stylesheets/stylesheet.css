@@ -368,3 +368,35 @@ div.footer a:hover {
 
 /* Mobile Portrait Size to Mobile Landscape Size (devices and browsers) */
 @media only screen and (max-width: 479px) {}
+
+.date{
+  color: #c5c5c5;
+  font-style: italic;
+  text-align: right;
+  right: 25%;
+  position: absolute;
+  margin-top: 10px;
+}
+
+span.title{
+  color: #d5000d;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.title-box{
+  margin-bottom: 15px;
+}
+
+.content{
+  text-align: justify;
+}
+
+a.blog-link{
+  text-decoration: none;
+}
+
+.outer-box{
+  margin-bottom: 30px;
+}

@@ -1,8 +1,3 @@
----
-layout: default
-title: Kameshwaran
----
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -25,88 +20,27 @@ title: Kameshwaran
         <h2>Welcome to <a href="https://github.com/Kameshwaran">Kameshwaran</a>'s blogs.</h2>
         <hr>
         <section id="main_content">
-          
-          <h3>
-            <a id="array-inquiry" class="anchor" href="#array-inquiry" aria-hidden="true">
-              <span class="octicon octicon-link"></span>
-            </a>
-            Ruby Array Inquiry
-          </h3>
-          
-          <p>Consider the problem, checking the presence of an element in the array. Let us solve this problem using ruby. There are three possible solutions to do it. Let's look into it.</p>
-          
-          <h3>
-            <a id="1-iterating-over-an-array" class="anchor" href="#1-iterating-over-an-array" aria-hidden="true">
-              <span class="octicon octicon-link"></span>
-            </a>
-            1. Iterating over an array
-          </h3>
 
-          <p>
-            Traversing over all the elements of the array and comparing them with the given element.
-          </p>
+          <div class="outer-box">
+            <div class="title-box">
+              <a href="blogs/searching-in-hash" class="blog-link">
+                <span class="title">Searching in a Hash</span>
+                <span class="date">01 January 2015</span>
+              </a>
+            </div>
+            <div class="content">Today we will look into a interesting problem in ruby. 'Accessing the hash values through the key'. When the hash is not nested, we can easily access the elements through keys. Here we discuss the disadvantages of using the tradional syntax and some interesting thing called 'search in a Hash'...</div>
+          </div>
 
-<pre><code>status = false
-array.each do | element |
-  status = true if (element == element_to_find)
-end</code></pre>
+          <div class="outer-box">
+            <div class="title-box">
+              <a href="blogs/array-inquiry" class="blog-link">
+                <span class="title">Array Inquiry</span>
+                <span class="date">02 December 2014</span>
+              </a>
+            </div>
+            <div class="content">Consider the problem, checking the presence of an element in the array. Let us solve this problem using ruby. There are three possible solutions to do it. Always we need a solution that is efficient and elegant. Let's discuss what is array inquiry, why it is needed and how elegant it is... </div>
+          </div>
 
-          <h3>
-            <a id="2-using-index-method" class="anchor" href="#2-using-index-method" aria-hidden="true">  <span class="octicon octicon-link"></span>
-            </a>
-            2. Using 'index' method
-          </h3>
-
-          <p>'index' method in ruby returns the index of an element in the array if the element is present. Otherwise it returns nil.</p>
-
-<pre><code>status = array.index(element_to_find).present?</code></pre>
-
-          <h3>
-            <a id="3-arrayinquirer" class="anchor" href="#3-arrayinquirer" aria-hidden="true">
-              <span class="octicon octicon-link"></span>
-            </a>
-            3. ArrayInquirer
-          </h3>
-
-          <p>
-            Finally we need a solution that should solve the problem correctly and efficiently. It should be more readable. Let's see what 'Arrayinquirer' is,
-          </p>
-
-<pre><code>["code", "brahma"].inquiry.code? =&gt; true
-["code", "brahma"].inquiry.brahma? =&gt; true
-["code", "brahma"].inquiry.really? =&gt; false</code></pre>
-
-          <p>A <strong>ArrayInquirer</strong> is a method which solves the above stated problem in very elegant way. The implementation is as follows,</p>
-
-<pre><code>class ArrayInquirer &lt; Array
-private
-  def method_missing method, *args
-    begin
-      any? { |element| element.to_s == method[0..-2] }
-    rescue NoMethodError
-      super method, *args
-    end
-  end
-end
-
-module ArrayInquiry
-  def inquiry
-    ArrayInquirer.new(self)
-  end
-end
-
-Array.send(:include, ArrayInquiry)</code></pre>
-
-          <h3>
-            <a id="explanation" class="anchor" href="#explanation" aria-hidden="true">
-              <span class="octicon octicon-link"></span>
-            </a>
-            Explanation
-          </h3>
-
-          <p>
-            ArrayInquirer extends Array class and implements method_missing. whenever any method is invoked on the array, the method_missing will be called with name and arguments of original call only if the method is not present. Presence of the element is ensured inside the method_missing implementation.
-          </p>
         </section>
       </div>
     </div>
