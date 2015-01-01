@@ -1,0 +1,45 @@
+Today we will look into a interesting problem in ruby. 'Accessing the hash values through the key'. When the hash is not nested, we can easily access the elements through keys. Let's take a simple hash example,
+
+simple_hash = { 
+ 	"key1" => "value1",
+ 	"key2" => "value2"
+}
+
+If i need the "value1" from the hash, i can access it by simply writing simple_hash["key1"]. Similarly for "value2".
+
+But what if hash is nested. Take the following example,
+nested_hash = {
+	"key1" => "value1",
+	"key2" => "value2",
+	"key3" => {
+		"child_key1" => "child_value1",
+		"child_key2" => "child_value2",
+		"child_key3" => {
+			"code" => "brahma"
+		}
+	}
+}
+
+# nested_hash["key3"]["child_key2"] returns "child_value2"
+# nested_hash["key3"]["child_key3"]["code"] returns "brahma"
+# nested_hash["key4"]["child_key1"] raises  raises "NoMethodError"
+
+In the first two cases, I can access the values by passing the keys. If the hash is 10 times nested, then i have pass 10 keys to access the most nested value. The code will look ugly. If the hash is more nested, then accessing the value from the hash is very difficult.
+
+In the last case, we got an exception, since 'key4' doesn't exist in the hash. 
+
+Why can't we come up with the new solution that overcomes this syntax and rescues the exception? Let's implement searching in a Hash. Here is the recursive solution for searching in a Hash.
+
+def search(hash, keyword)
+  if (hash.respond_to?(:keys) && hash.keys.include?(keyword))
+      hash[keyword]
+  elsif hash.respond_to?(:find)
+    result = nil
+    hash.values.find { |value| result = search(value, keyword) }
+    result
+  end
+end
+ 
+# puts search(nested_hash, "child_key2") => "child_value2"
+# puts search(nested_hash, "code") => "brahma"
+# puts search(nested_hash, "key4") => nil
