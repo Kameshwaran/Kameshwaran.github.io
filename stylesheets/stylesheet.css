@@ -86,7 +86,7 @@ header h2 {
 
 #container {
   background: white;
-  min-height: 595px;
+  min-height: 550px;
 }
 
 .inner {
@@ -312,7 +312,7 @@ dl dt {
 
 div.footer {
   font-size: 12px;
-  text-align: right;
+  text-align: center;
   color: #aaa;
 }
 
@@ -378,7 +378,7 @@ div.footer a:hover {
   margin-top: 10px;
 }
 
-span.title{
+.title{
   color: #d5000d;
   font-size: 22px;
   font-weight: bold;
