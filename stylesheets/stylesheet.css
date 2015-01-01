@@ -50,7 +50,7 @@ table {
 body {
   font-size: 1em;
   line-height: 1.5; 
-  background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat;
+  padding-bottom: 20px;
   font-family: 'Helvetica Neue', Helvetica, Arial, serif;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
   color: #6d6d6d;
@@ -308,19 +308,16 @@ dl dt {
   color: #303030;
 }
 
-footer {
-  background: transparent url('../images/hr.png') 0 0 no-repeat;
-  margin-top: 40px;
-  padding-top: 20px;
-  padding-bottom: 30px;
-  font-size: 13px;
+div.footer {
+  font-size: 12px;
+  text-align: right;
   color: #aaa;
 }
 
-footer a {
+div.footer a {
   color: #666;
 }
-footer a:hover {
+div.footer a:hover {
   color: #444;
 }
 
