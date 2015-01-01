@@ -1,14 +1,51 @@
-Today we will look into a interesting problem in ruby. 'Accessing the hash values through the key'. When the hash is not nested, we can easily access the elements through keys. Let's take a simple hash example,
+---
+layout: default
+title: Kameshwaran
+---
 
-simple_hash = { 
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>Kameshwaran's Blog - Searching in a Hash</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+        <div style="padding-top: 20px;"></div>
+        <h2>Welcome to <a href="https://github.com/Kameshwaran">Kameshwaran</a>'s blogs.</h2>
+        <hr>
+        <section id="main_content">
+          <h3>
+            <a id="array-inquiry" class="anchor" href="#array-inquiry" aria-hidden="true">
+              <span class="octicon octicon-link"></span>
+            </a>
+            Searching in a Hash
+          </h3>
+          
+          <p>Today we will look into a interesting problem in ruby. 'Accessing the hash values through the key'. When the hash is not nested, we can easily access the elements through keys. Let's take a simple hash example,</p>
+
+<pre><code>simple_hash = { 
  	"key1" => "value1",
  	"key2" => "value2"
-}
+}</code></pre>
+					<p>
+						If i need the "value1" from the hash, i can access it by simply writing simple_hash["key1"]. Similarly for "value2".
+					</p>
+					<p>
+						But what if hash is nested. Take the following example,
+					</p>
 
-If i need the "value1" from the hash, i can access it by simply writing simple_hash["key1"]. Similarly for "value2".
-
-But what if hash is nested. Take the following example,
-nested_hash = {
+<pre><code>nested_hash = {
 	"key1" => "value1",
 	"key2" => "value2",
 	"key3" => {
@@ -20,17 +57,24 @@ nested_hash = {
 	}
 }
 
+
 # nested_hash["key3"]["child_key2"] returns "child_value2"
 # nested_hash["key3"]["child_key3"]["code"] returns "brahma"
-# nested_hash["key4"]["child_key1"] raises  raises "NoMethodError"
+# nested_hash["key4"]["child_key1"] raises  raises "NoMethodError"</code></pre>
+					
+					<p>
+          	In the first two cases, I can access the values by passing the keys. If the hash is 10 times nested, then i have pass 10 keys to access the most nested value. The code will look ugly. If the hash is more nested, then accessing the value from the hash is very difficult.
+          </p>
 
-In the first two cases, I can access the values by passing the keys. If the hash is 10 times nested, then i have pass 10 keys to access the most nested value. The code will look ugly. If the hash is more nested, then accessing the value from the hash is very difficult.
+					<p>
+						In the last case, we got an exception, since 'key4' doesn't exist in the hash. 
+					</p>
 
-In the last case, we got an exception, since 'key4' doesn't exist in the hash. 
+					<p>
+						Why can't we come up with the new solution that overcomes this syntax and rescues the exception? Let's implement searching in a Hash. Here is the recursive solution for searching in a Hash.
+					</p>
 
-Why can't we come up with the new solution that overcomes this syntax and rescues the exception? Let's implement searching in a Hash. Here is the recursive solution for searching in a Hash.
-
-def search(hash, keyword)
+<pre><code>def search(hash, keyword)
   if (hash.respond_to?(:keys) && hash.keys.include?(keyword))
       hash[keyword]
   elsif hash.respond_to?(:find)
@@ -42,4 +86,13 @@ end
  
 # puts search(nested_hash, "child_key2") => "child_value2"
 # puts search(nested_hash, "code") => "brahma"
-# puts search(nested_hash, "key4") => nil
+# puts search(nested_hash, "key4") => nil</code></pre>
+
+    <div align="center" style="padding-bottom: 20px;">
+      ***
+    </div>
+    <div class="footer">
+      &copy 2015, Kameshwaran S, All Copyrights Reserved.
+    </div>
+  </body>
+</html>
