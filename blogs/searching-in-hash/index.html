@@ -41,16 +41,16 @@
 					</p>
 
 <pre><code>nested_hash = {
-	"key1" => "value1",
-	"key2" => "value2",
-	"key3" => {
+  "key1" => "value1",
+  "key2" => "value2",
+  "key3" => {
 		"child_key1" => "child_value1",
 		"child_key2" => "child_value2",
 		"child_key3" => {
 			"code" => "brahma"
 		}
 	},
-  key4   => {
+  "key4" => {
     "child_key1" => "child_value1_in_key4",
     "child_key2" => "child_value2_in_key4",
     "child_key3" => {
@@ -58,7 +58,6 @@
     }
   }
 }
-
 
 # nested_hash["key3"]["child_key2"] returns "child_value2"
 # nested_hash["key3"]["child_key3"]["code"] returns "brahma"
