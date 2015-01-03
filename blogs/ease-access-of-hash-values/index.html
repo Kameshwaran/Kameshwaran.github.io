@@ -10,7 +10,7 @@
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <title>Searching in a Hash - Kameshwaran's Blog</title>
+    <title>Shorthand method for accessing values in a Hash - Kameshwaran's Blog</title>
   </head>
 
   <body>
@@ -22,7 +22,7 @@
             <a id="array-inquiry" class="anchor" href="#array-inquiry" aria-hidden="true">
               <span class="octicon octicon-link"></span>
             </a>
-            Searching in a Hash
+            Shorthand method for accessing values in a Hash
           </h3>
 
           <hr>
@@ -72,26 +72,26 @@
 					</p>
 
 					<p>
-						Why can't we come up with the new solution that overcomes this syntax and rescues the exception? Let's implement searching in a Hash. Here is the recursive solution for searching in a Hash.
+						Why can't we come up with the new solution that overcomes this syntax and rescues the exception? Let's implement a method which solves this problem. Here is the recursive solution.
 					</p>
 
 <pre><code>
-def search(hash, keyword, options={})
-  hash = search(hash, options[:parent]) if options[:parent]
+def get_value(hash, keyword, options={})
+  hash = get_value(hash, options[:parent]) if options[:parent]
   if (hash.respond_to?(:keys) && hash.keys.include?(keyword))
       hash[keyword]
   elsif hash.respond_to?(:find)
     result = nil
-    hash.values.find { |value| result = search(value, keyword) }
+    hash.values.find { |value| result = get_value(value, keyword) }
     result
   end
 end
  
-# puts search(nested_hash, "child_key2") => "child_value2"
-# puts search(nested_hash, "code") => "brahma"
-# puts search(nested_hash, "key5") => nil
-# puts search(nested_hash, "child_key2", { :parent => "key4" }) => "child_value2_in_key4"
-# puts search(nested_hash, "child_key2", { :parent => "key3" }) => "child_value2"</code></pre>
+# puts get_value(nested_hash, "child_key2") => "child_value2"
+# puts get_value(nested_hash, "code") => "brahma"
+# puts get_value(nested_hash, "key5") => nil
+# puts get_value(nested_hash, "child_key2", { :parent => "key4" }) => "child_value2_in_key4"
+# puts get_value(nested_hash, "child_key2", { :parent => "key3" }) => "child_value2"</code></pre>
 
     <div align="center" style="margin-bottom: 20px;">
       <a class="home-btn" href="../../">
