@@ -49,27 +49,36 @@
 		"child_key3" => {
 			"code" => "brahma"
 		}
-	}
+	},
+  key4   => {
+    "child_key1" => "child_value1_in_key4",
+    "child_key2" => "child_value2_in_key4",
+    "child_key3" => {
+      "code" => "duplicate_keys"
+    }
+  }
 }
 
 
 # nested_hash["key3"]["child_key2"] returns "child_value2"
 # nested_hash["key3"]["child_key3"]["code"] returns "brahma"
-# nested_hash["key4"]["child_key1"] raises  raises "NoMethodError"</code></pre>
+# nested_hash["key5"]["child_key1"] raises  raises "NoMethodError"</code></pre>
 					
 					<p>
           	In the first two cases, I can access the values by passing the keys. If the hash is 10 times nested, then i have pass 10 keys to access the most nested value. The code will look ugly. If the hash is more nested, then accessing the value from the hash is very difficult.
           </p>
 
 					<p>
-						In the last case, we got an exception, since 'key4' doesn't exist in the hash. 
+						In the last case, we got an exception, since 'key5' doesn't exist in the hash. 
 					</p>
 
 					<p>
 						Why can't we come up with the new solution that overcomes this syntax and rescues the exception? Let's implement searching in a Hash. Here is the recursive solution for searching in a Hash.
 					</p>
 
-<pre><code>def search(hash, keyword)
+<pre><code>
+def search(hash, keyword, options={})
+  hash = search(hash, options[:parent]) if options[:parent]
   if (hash.respond_to?(:keys) && hash.keys.include?(keyword))
       hash[keyword]
   elsif hash.respond_to?(:find)
@@ -81,7 +90,9 @@ end
  
 # puts search(nested_hash, "child_key2") => "child_value2"
 # puts search(nested_hash, "code") => "brahma"
-# puts search(nested_hash, "key4") => nil</code></pre>
+# puts search(nested_hash, "key5") => nil
+# puts search(nested_hash, "child_key2", { :parent => "key4" }) => "child_value2_in_key4"
+# puts search(nested_hash, "child_key2", { :parent => "key3" }) => "child_value2"</code></pre>
 
     <div align="center" style="margin-bottom: 20px;">
       <a class="home-btn" href="../../">
