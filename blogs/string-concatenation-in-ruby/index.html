@@ -59,7 +59,7 @@ c = nil
 b = "brahma"
 c = nil  
 
-a.concat(b) => "Codebrahma" # Creates a new String 'Codebrahma'
+a.concat(b) => "Codebrahma" # appends 'brahma' to string object 'a'.
 a.concat(c) => raises 'TypeError'
 </code></pre>
           
@@ -71,8 +71,8 @@ a.concat(c) => raises 'TypeError'
 b = "brahma"
 c = nil
 
-a.concat(b) => "Codebrahma" # Creates a new String 'Codebrahma'
-a.concat(c) => raises 'TypeError'</code></pre>
+a << b => "Codebrahma" # appends 'brahma' to string object 'a'.
+a << c => raises 'TypeError'</code></pre>
         
         <p>Let's see what is the best method according to time consumption,</p>
 <pre><code>require 'benchmark'
@@ -110,7 +110,7 @@ end
           From the above benchmark measurment, '<<' is the method which consumes very less time. But we won't always consider time consumption. We consider the robustness and safty. When you don't have any idea of the String objects, you can use 'String Interpolation'.
         </p>
         <p>
-          Here is one more 'String' concatenation method.
+          Here is a another way of concatenating strings...
         </p>
 <pre><code>"Code" "brahma" => "Codebrahma" #creates a new string codebrahma.</code></pre>
         <p>When i encountered the above line of code, i really got interested to know how it works. Actually the space is not a method. This syntax only works on string literals not on string objects. It is just part of the literal syntax. If you try this syntax with string objects, then you will get 'NoMethodError' exception.</p>
