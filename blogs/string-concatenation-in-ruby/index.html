@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/pygment_trac.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../../stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>String Concatenation in Ruby - Kameshwaran's Blog</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+        <div style="padding-top: 10px;"></div>
+        <section id="main_content">
+          <h3  class="title" style="text-align: center;">
+            <a id="array-inquiry" class="anchor" href="#array-inquiry" aria-hidden="true">
+              <span class="octicon octicon-link"></span>
+            </a>
+            String Concatenation in Ruby
+          </h3>
+
+          <hr>
+          <p>String concatenation is most commonly used in all the applications, independent of programming languages. Let's take Ruby language. There are four ways to concatenate strings in ruby. We will have a look at it.</p>
+          
+          <h3> 1. Using '+' Method</h3>
+          <p>
+            '+' is a method which takes a argument and creates a new string by concatenating the argument to current string object.
+          </p>
+
+<pre><code>a = "Code"
+b = "brahma"
+c = nil
+
+a + b => "Codebrahma" # Creates a new String 'Codebrahma'
+a + c => raises 'TypeError' # since nil is not a String object</code></pre>
+          
+          <h3>2. Using String Interpolation:</h3>
+          <p>
+            String interpolation is used to subsitute values for placeholders in a string. We can avoid the type error problem using this method.
+          </p>
+<pre><code>a = "Code"
+b = "brahma"
+c = nil  
+
+"#{a}#{b}" => "Codebrahma" # Creates a new String 'Codebrahma'
+"#{a}#{c}" => "Code" # nil is converted into empty string</code></pre>
+          
+          <h3>3. Using 'concat' method</h3>
+          <p>
+            In the last two cases, the result is a new string object. 'concat' method actually appends the argument to the object on which the method is invoked. This method also raises 'TypeError' when argument is nil.
+          </p>
+<pre><code>a = "Code"
+b = "brahma"
+c = nil  
+
+a.concat(b) => "Codebrahma" # appends 'brahma' to string object 'a'.
+a.concat(c) => raises 'TypeError'
+</code></pre>
+          
+          <h3>4. Using '<<' method</h3>
+          <p>
+            This method also mutates the source object on which the method invoked. Also it raises Error when argument is nil. There is no difference with concat in terms of result.
+          </p>
+<pre><code>a = "Code"
+b = "brahma"
+c = nil
+
+a << b => "Codebrahma" # appends 'brahma' to string object 'a'.
+a << c => raises 'TypeError'</code></pre>
+        
+        <p>Let's see what is the best method according to time consumption,</p>
+<pre><code>require 'benchmark'
+n = 10000
+Benchmark.bm do |x|
+  x.report("'+' Method") { 
+    source_string = "src"
+    argument_string = "arg"
+    n.times { source_string + argument_string } 
+  }
+  x.report("String Interpolation") { 
+    source_string = "src"
+    argument_string = "arg"
+    n.times { "#{source_string}#{argument_string}" } 
+  }
+  x.report("'concat' Method") { 
+    source_string = "src"
+    argument_string = "arg"
+    n.times { source_string.concat(argument_string) } 
+  }
+  x.report("'<<' Method") { 
+    source_string = "src"
+    argument_string = "arg"
+    n.times { source_string << argument_string } 
+  }
+end
+
+#Results
+#                       user       system      total        real
+# '+' Method            0.010000   0.000000   0.010000 (  0.006410)
+# String Interpolation  0.010000   0.000000   0.010000 (  0.006745)
+# 'concat' Method       0.000000   0.000000   0.000000 (  0.002474)
+# '<<' Method           0.000000   0.000000   0.000000 (  0.001716)</code></pre>
+        <p>
+          From the above benchmark measurment, '<<' is the method which consumes very less time. But we won't always consider time consumption. We consider the robustness and safty. When you don't have any idea of the String objects, you can use 'String Interpolation'.
+        </p>
+        <p>
+          Here is a another way of concatenating strings...
+        </p>
+<pre><code>"Code" "brahma" => "Codebrahma" #creates a new string codebrahma.</code></pre>
+        <p>When i encountered the above line of code, i really got interested to know how it works. Actually the space is not a method. This syntax only works on string literals not on string objects. It is just part of the literal syntax. If you try this syntax with string objects, then you will get 'NoMethodError' exception.</p>
+        </section>
+      </div>
+    </div>
+
+    <div align="center" style="margin-bottom: 20px;">
+      <a class="home-btn" href="../../">
+        &larr; Return to Home
+      </a>
+    </div>
+
+    <div align="center">
+      ***
+    </div>
+    <div class="footer">
+      &copy 2015, Kameshwaran S, All Copyrights Reserved.
+    </div>
+  </body>
+</html>
