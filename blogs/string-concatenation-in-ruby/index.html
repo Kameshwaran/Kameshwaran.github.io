@@ -1,0 +1,86 @@
+String concatenation:
+
+String concatenation is most commonly used in all the applications, independent of programming languages. Let's take Ruby. There are four ways to concatenate strings in ruby. We will have a look at it. 
+
+1. Using '+' Method
+  '+' is a method which takes a argument and creates a new string by concatenating the argument to current string object.
+
+  a = "Code"
+  b = "brahma"
+  c = nil
+
+  a + b => "Codebrahma" # Creates a new String 'Codebrahma'
+  a + c => raises 'TypeError' # since nil is not a String object
+
+2. Using String Interpolation:
+  String interpolation is used to subsitute values for placeholders in a string. We can avoid the type error problem using this method.
+
+	a = "Code"
+  b = "brahma"
+  c = nil  
+
+  "#{a}#{b}" => "Codebrahma" # Creates a new String 'Codebrahma'
+  "#{a}#{c}" => "Code" # nil is converted into empty string
+
+3. Using 'concat' method
+	In the last two cases, the result is a new string object. 'concat' method actually appends the argument to the object on which the method is invoked. This method also raises 'TypeError' when argument is nil.
+
+	a = "Code"
+  b = "brahma"
+  c = nil  
+
+  a.concat(b) => "Codebrahma" # Creates a new String 'Codebrahma'
+  a.concat(c) => raises 'TypeError'
+
+4. Using '<<' method
+	This method also mutates the source object on which the method invoked. Also it raises Error when argument is nil. There is no difference with concat in terms of result.
+
+	a = "Code"
+  b = "brahma"
+  c = nil  
+
+  a.concat(b) => "Codebrahma" # Creates a new String 'Codebrahma'
+  a.concat(c) => raises 'TypeError'
+
+Let's see what is the best method according to time consumption,
+
+require 'benchmark'
+
+n = 10000
+
+Benchmark.bm do |x|
+  x.report("'+' Method") { 
+  	source_string = "src"
+		argument_string = "arg"
+  	n.times { source_string + argument_string } 
+  }
+  x.report("String Interpolation") { 
+  	source_string = "src"
+		argument_string = "arg"
+  	n.times { "#{source_string}#{argument_string}" } 
+  }
+  x.report("'concat' Method") { 
+  	source_string = "src"
+		argument_string = "arg"
+  	n.times { source_string.concat(argument_string) } 
+  }
+  x.report("'<<' Method") { 
+  	source_string = "src"
+		argument_string = "arg"
+  	n.times { source_string << argument_string } 
+  }
+end
+
+       								user     system      total        real
+'+' Method  					0.010000   0.000000   0.010000 (  0.006410)
+String Interpolation  0.010000   0.000000   0.010000 (  0.006745)
+'concat' Method  			0.000000   0.000000   0.000000 (  0.002474)
+'<<' Method  					0.000000   0.000000   0.000000 (  0.001716)
+
+From the above benchmark measurment, '<<' is the method which consumes very less time. But we won't always consider time consumption. We consider the robustness and safty. When you don't have any idea of the String objects, you can use 'String Interpolation'.
+
+Here is one more 'String' concatenation method.
+
+"Code" "brahma" => "Codebrahma" #creates a new string codebrahma. 
+
+When i encountered the above line of code, i really got interested to know how it works. Actually the space is not a method. This syntax only works on string literals not on string objects. It is just part of the literal syntax. If you try this syntax with string objects, then you will get 'NoMethodError' exception.
