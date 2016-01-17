@@ -37,10 +37,10 @@
           </h3>
 
           <hr>
-          
+
           <p>Today we will look into a interesting problem in ruby. 'Accessing the hash values through the key'. When the hash is not nested, we can easily access the elements through keys. Let's take a simple hash example,</p>
 
-<pre><code>simple_hash = { 
+<pre><code>simple_hash = {
  	"key1" => "value1",
  	"key2" => "value2"
 }</code></pre>
@@ -73,13 +73,13 @@
 # nested_hash["key3"]["child_key2"] returns "child_value2"
 # nested_hash["key3"]["child_key3"]["code"] returns "brahma"
 # nested_hash["key5"]["child_key1"] raises  raises "NoMethodError"</code></pre>
-					
+
 					<p>
           	In the first two cases, I can access the values by passing the keys. If the hash is 10 times nested, then i have pass 10 keys to access the most nested value. The code will look ugly. If the hash is more nested, then accessing the value from the hash is very difficult.
           </p>
 
 					<p>
-						In the last case, we got an exception, since 'key5' doesn't exist in the hash. 
+						In the last case, we got an exception, since 'key5' doesn't exist in the hash.
 					</p>
 
 					<p>
@@ -97,12 +97,25 @@ def get_value(hash, keyword, options={})
     result
   end
 end
- 
+
 # puts get_value(nested_hash, "child_key2") => "child_value2"
 # puts get_value(nested_hash, "code") => "brahma"
 # puts get_value(nested_hash, "key5") => nil
 # puts get_value(nested_hash, "child_key2", { :parent => "key4" }) => "child_value2_in_key4"
 # puts get_value(nested_hash, "child_key2", { :parent => "key3" }) => "child_value2"</code></pre>
+
+    <div>
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+      <!-- Ad1 -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-8138814041996509"
+           data-ad-slot="9908678076"
+           data-ad-format="auto"></ins>
+      <script>
+      (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
 
     <div align="center" style="margin-bottom: 20px;">
       <a class="home-btn" href="../../">
@@ -114,7 +127,7 @@ end
       ***
     </div>
     <div class="footer">
-      &copy 2015, Kameshwaran S, All Copyrights Reserved.
+      &copy 2016, Kameshwaran S, All Copyrights Reserved.
     </div>
   </body>
 </html>

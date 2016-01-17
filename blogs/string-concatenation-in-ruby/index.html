@@ -38,7 +38,7 @@
 
           <hr>
           <p>String concatenation is most commonly used in all the applications, independent of programming languages. Let's take Ruby language. There are four ways to concatenate strings in ruby. We will have a look at it.</p>
-          
+
           <h3> 1. Using '+' Method</h3>
           <p>
             '+' is a method which takes a argument and creates a new string by concatenating the argument to current string object.
@@ -50,30 +50,30 @@ c = nil
 
 a + b => "Codebrahma" # Creates a new String 'Codebrahma'
 a + c => raises 'TypeError' # since nil is not a String object</code></pre>
-          
+
           <h3>2. Using String Interpolation:</h3>
           <p>
             String interpolation is used to subsitute values for placeholders in a string. We can avoid the type error problem using this method.
           </p>
 <pre><code>a = "Code"
 b = "brahma"
-c = nil  
+c = nil
 
 "#{a}#{b}" => "Codebrahma" # Creates a new String 'Codebrahma'
 "#{a}#{c}" => "Code" # nil is converted into empty string</code></pre>
-          
+
           <h3>3. Using 'concat' method</h3>
           <p>
             In the last two cases, the result is a new string object. 'concat' method actually appends the argument to the object on which the method is invoked. This method also raises 'TypeError' when argument is nil.
           </p>
 <pre><code>a = "Code"
 b = "brahma"
-c = nil  
+c = nil
 
 a.concat(b) => "Codebrahma" # appends 'brahma' to string object 'a'.
 a.concat(c) => raises 'TypeError'
 </code></pre>
-          
+
           <h3>4. Using '<<' method</h3>
           <p>
             This method also mutates the source object on which the method invoked. Also it raises Error when argument is nil. There is no difference with concat in terms of result.
@@ -84,30 +84,30 @@ c = nil
 
 a << b => "Codebrahma" # appends 'brahma' to string object 'a'.
 a << c => raises 'TypeError'</code></pre>
-        
+
         <p>Let's see what is the best method according to time consumption,</p>
 <pre><code>require 'benchmark'
 n = 10000
 Benchmark.bm do |x|
-  x.report("'+' Method") { 
+  x.report("'+' Method") {
     source_string = "src"
     argument_string = "arg"
-    n.times { source_string + argument_string } 
+    n.times { source_string + argument_string }
   }
-  x.report("String Interpolation") { 
+  x.report("String Interpolation") {
     source_string = "src"
     argument_string = "arg"
-    n.times { "#{source_string}#{argument_string}" } 
+    n.times { "#{source_string}#{argument_string}" }
   }
-  x.report("'concat' Method") { 
+  x.report("'concat' Method") {
     source_string = "src"
     argument_string = "arg"
-    n.times { source_string.concat(argument_string) } 
+    n.times { source_string.concat(argument_string) }
   }
-  x.report("'<<' Method") { 
+  x.report("'<<' Method") {
     source_string = "src"
     argument_string = "arg"
-    n.times { source_string << argument_string } 
+    n.times { source_string << argument_string }
   }
 end
 
@@ -126,6 +126,18 @@ end
 <pre><code>"Code" "brahma" => "Codebrahma" #creates a new string codebrahma.</code></pre>
         <p>When i encountered the above line of code, i really got interested to know how it works. Actually the space is not a method. This syntax only works on string literals not on string objects. It is just part of the literal syntax. If you try this syntax with string objects, then you will get 'NoMethodError' exception.</p>
         </section>
+        <div>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- Ad1 -->
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-8138814041996509"
+               data-ad-slot="9908678076"
+               data-ad-format="auto"></ins>
+          <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </div>
       </div>
     </div>
 
@@ -139,7 +151,7 @@ end
       ***
     </div>
     <div class="footer">
-      &copy 2015, Kameshwaran S, All Copyrights Reserved.
+      &copy 2016, Kameshwaran S, All Copyrights Reserved.
     </div>
   </body>
 </html>
