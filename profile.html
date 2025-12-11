@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kameshwaran Sachithanantham - Profile</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb);
+        }
+
+        .profile-header {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            flex-wrap: wrap;
+        }
+
+        .avatar-section {
+            flex-shrink: 0;
+        }
+
+        .avatar {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 60px;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .profile-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .profile-info h1 {
+            font-size: 32px;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .profile-title {
+            font-size: 18px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .profile-subtitle {
+            font-size: 16px;
+            color: #718096;
+            margin-bottom: 16px;
+        }
+
+        .profile-location {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #4a5568;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #718096;
+            margin-top: 4px;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: #2d3748;
+            margin-bottom: 24px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 4px;
+            height: 24px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        .experience-item {
+            padding-bottom: 24px;
+            margin-bottom: 24px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .experience-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .experience-company {
+            font-size: 16px;
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .experience-duration {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .experience-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-top: 12px;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 12px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border: 1px solid #667eea;
+            color: #667eea;
+            padding: 10px 16px;
+            border-radius: 24px;
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .about-text {
+            color: #4a5568;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        .about-text strong {
+            color: #2d3748;
+        }
+
+        .education-item {
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .education-degree {
+            font-size: 17px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .education-school {
+            color: #667eea;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .education-duration {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 24px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .languages {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .language-item {
+            background: #f7fafc;
+            padding: 16px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .language-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 4px;
+        }
+
+        .language-proficiency {
+            font-size: 14px;
+            color: #718096;
+        }
+
+        .projects-list {
+            display: grid;
+            gap: 20px;
+        }
+
+        .project-item {
+            background: #f7fafc;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .project-name {
+            font-size: 17px;
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .project-duration {
+            font-size: 14px;
+            color: #718096;
+            margin-bottom: 12px;
+        }
+
+        .project-description {
+            color: #4a5568;
+            line-height: 1.6;
+            margin-bottom: 12px;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .tech-badge {
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 13px;
+        }
+
+        @media (max-width: 768px) {
+            .profile-header {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .stats {
+                gap: 15px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .header-section {
+                padding: 24px;
+            }
+
+            .section {
+                padding: 20px;
+            }
+        }
+    
+    .profile-photo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 4px solid #4CAF50;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .profile-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header-section">
+            <div class="profile-header">
+                <div class="avatar-section">
+                    <div class="avatar">KS</div>
+                </div>
+                <div class="profile-info">
+                    <h1>Kameshwaran Sachithanantham</h1>
+                    <div class="profile-title">Software Engineer cum Project Manager</div>
+                    <div class="profile-subtitle">React.js • Node.js • React Native • Ruby on Rails</div>
+                    <div class="profile-location">
+                        📍 Bengaluru, Karnataka, India
+                    </div>
+                    <div class="stats">
+                        <div class="stat">
+                            <div class="stat-number">11+</div>
+                            <div class="stat-label">Years Experience</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">500+</div>
+                            <div class="stat-label">Connections</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">823</div>
+                            <div class="stat-label">Followers</div>
+                        </div>
+                    </div>
+                    <a href="https://www.linkedin.com/in/kameshwaran-sachithanantham/" class="cta-button" target="_blank">View LinkedIn Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Section -->
+        <div class="section">
+            <div class="section-title">About</div>
+            <div class="about-text">
+                <p>Strong techie skilled in React, React Native, Node.js, Angular, Ruby on Rails, Python and more. Currently working as a <strong>Software Project Manager at Codebrahma</strong>, managing the delivery of software projects from requirement collection to client demos. Experienced in managing teams, code reviews, testing, and client communication.</p>
+                <p style="margin-top: 12px;">Total Experience: <strong>11 years and 10 months</strong> in software development and project management.</p>
+            </div>
+        </div>
+
+        <!-- Experience Section -->
+        <div class="section">
+            <div class="section-title">Experience</div>
+            <div>
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Software Project Manager</div>
+                            <div class="experience-company">Codebrahma</div>
+                            <div class="experience-duration">Mar 2016 - Present • 9 years 8 months</div>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Managing delivery of software projects right from requirement collection. Managing teams, reviewing fellow team mates work, testing and demo-ing of the software to clients. Working on projects across financial, education, and healthcare domains.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Senior Software Engineer</div>
+                            <div class="experience-company">Codebrahma</div>
+                            <div class="experience-duration">May 2015 - Mar 2016 • 10 months</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Full Stack Developer</div>
+                            <div class="experience-company">Codebrahma</div>
+                            <div class="experience-duration">Jun 2014 - Apr 2015 • 10 months</div>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Built multiple projects on financial, education and healthcare domains with ROR, Angular, jQuery, and Backbonejs.
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div>
+                            <div class="experience-title">Engineering Intern</div>
+                            <div class="experience-company">Codebrahma</div>
+                            <div class="experience-duration">Dec 2013 - May 2014 • 5 months</div>
+                        </div>
+                    </div>
+                    <div class="experience-description">
+                        Learnt and built projects on Ruby on Rails, Javascript, BackboneJs, Angular Js.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="section">
+            <div class="section-title">Skills</div>
+            <div class="skills-grid">
+                <div class="skill-tag">React</div>
+                <div class="skill-tag">Angular</div>
+                <div class="skill-tag">React Native</div>
+                <div class="skill-tag">Node.js</div>
+                <div class="skill-tag">Ruby</div>
+                <div class="skill-tag">Ruby on Rails</div>
+                <div class="skill-tag">Python</div>
+                <div class="skill-tag">JavaScript</div>
+                <div class="skill-tag">Project Management</div>
+                <div class="skill-tag">Software Engineering</div>
+                <div class="skill-tag">Team Leadership</div>
+                <div class="skill-tag">Full Stack Development</div>
+            </div>
+        </div>
+
+        <!-- Education Section -->
+        <div class="section">
+            <div class="section-title">Education</div>
+            <div class="education-item">
+                <div class="education-degree">Bachelor of Technology (B.Tech.)</div>
+                <div class="education-school">Vellore Institute of Technology</div>
+                <div class="education-duration">2010 - 2014 • First Class with Distinction</div>
+                <div class="education-duration" style="margin-top: 8px;">Information Technology • Vellore, India</div>
+            </div>
+        </div>
+
+        <!-- Languages Section -->
+        <div class="section">
+            <div class="section-title">Languages</div>
+            <div class="languages">
+                <div class="language-item">
+                    <div class="language-name">English</div>
+                    <div class="language-proficiency">Full professional proficiency</div>
+                </div>
+                <div class="language-item">
+                    <div class="language-name">Tamil</div>
+                    <div class="language-proficiency">Native or bilingual proficiency</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="section">
+            <div class="section-title">Notable Projects</div>
+            <div class="projects-list">
+                <div class="project-item">
+                    <div class="project-name">P2P Lending Platform</div>
+                    <div class="project-duration">Mar 2015 - Apr 2015</div>
+                    <div class="project-description">
+                        Phase 2 Development for the P2P lending platform. Improvements to security services for tracking fraudulent users and more user friendly bank account authorization. Role: Technology Architect and Lead Developer.
+                    </div>
+                    <div class="tech-stack">
+                        <div class="tech-badge">Ruby</div>
+                        <div class="tech-badge">Rails</div>
+                        <div class="tech-badge">AngularJS</div>
+                        <div class="tech-badge">Salesforce</div>
+                        <div class="tech-badge">ThreatMetrix</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kameshwaran's Tech Blog</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .header-content h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header-content p {
+            color: rgba(255,255,255,0.9);
+            font-size: 1.1em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid transparent;
+        }
+
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: white;
+            transform: translateY(-2px);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.25);
+        }
+
+        .blog-card-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            color: white;
+        }
+
+        .blog-card-header h3 {
+            font-size: 1.4em;
+            margin-bottom: 8px;
+            line-height: 1.3;
+        }
+
+        .blog-date {
+            font-size: 0.85em;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .blog-card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .blog-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            flex-grow: 1;
+        }
+
+        .read-more {
+            display: inline-block;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            padding: 8px 12px;
+            border-radius: 5px;
+        }
+
+        .read-more:hover {
+            background: #f0f0f0;
+            color: #764ba2;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding-top: 30px;
+            border-top: 2px solid rgba(255,255,255,0.2);
+            font-size: 0.95em;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 40px;
+            color: white;
+            text-align: center;
+        }
+
+        .stat-item h4 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            opacity: 0.9;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            .header-content h1 {
+                font-size: 1.8em;
+            }
+
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .nav-links {
+                justify-content: center;
+                flex-direction: column;
+                width: 100%;
+            }
+        }
+    
+    .header-photo {
+        margin-left: 20px;
+    }
+
+    .author-avatar {
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+
+    @media (max-width: 768px) {
+        .author-avatar {
+            width: 80px;
+            height: 80px;
+        }
+    }
+</style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+        <div class="header-photo">
+            
+        </div>
+
+                <h1>📚 Kameshwaran's Tech Blog</h1>
+                <p>Insights on React, Node.js, Ruby on Rails & Web Development</p>
+            </div>
+            <div class="nav-links">
+                <a href="profile.html">👤 Profile</a>
+                <a href="https://github.com/Kameshwaran" target="_blank">🔗 GitHub</a>
+            </div>
+        </header>
+
+        <div class="stats">
+            <div class="stat-item">
+                <h4>11+</h4>
+                <p>Years Experience</p>
+            </div>
+            <div class="stat-item">
+                <h4>4</h4>
+                <p>Featured Posts</p>
+            </div>
+            <div class="stat-item">
+                <h4>500+</h4>
+                <p>Connections</p>
+            </div>
+        </div>
+
+        <div class="blog-grid">
+            <div class="blog-card">
+                <div class="blog-card-header">
+                    <h3>String Concatenation in Ruby</h3>
+                    <div class="blog-date">📅 04 January 2015</div>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-excerpt">Explore four powerful ways to concatenate strings in Ruby. Learn the best practices and performance considerations for string manipulation in Ruby applications.</p>
+                    <a href="string-concatenation-in-ruby.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-card-header">
+                    <h3>My Experience with Git Bisect</h3>
+                    <div class="blog-date">📅 03 January 2015</div>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-excerpt">Discover the power of Git Bisect for finding bugs efficiently. A deep dive into one of Git's most underrated features that can save you hours of debugging.</p>
+                    <a href="my-experience-with-git-bisect.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-card-header">
+                    <h3>Ease Access of Hash Values</h3>
+                    <div class="blog-date">📅 01 January 2015</div>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-excerpt">Learn elegant and efficient methods to access hash values in Ruby. Discover shorthand techniques that make your code more readable and maintainable.</p>
+                    <a href="ease-access-of-hash-values.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+
+            <div class="blog-card">
+                <div class="blog-card-header">
+                    <h3>Array Inquiry</h3>
+                    <div class="blog-date">📅 02 December 2014</div>
+                </div>
+                <div class="blog-card-body">
+                    <p class="blog-excerpt">Master efficient ways to check for element presence in arrays. Explore elegant solutions that are both performant and maintainable in Ruby.</p>
+                    <a href="array-inquiry.html" class="read-more">Read More →</a>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>© 2024 Kameshwaran Sachithanantham | Software Engineer & Project Manager | Built with modern web technologies</p>
+            <p style="margin-top: 10px; opacity: 0.8;">Expert in React, React Native, Node.js, Ruby on Rails & Full Stack Development</p>
+        </footer>
+    </div>
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
