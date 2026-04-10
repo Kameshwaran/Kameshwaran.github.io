@@ -77,6 +77,10 @@ jobs:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
           claude_args: --permission-mode bypassPermissions
           show_full_output: true
+          plugin_marketplaces: |
+            https://github.com/codebrahma/diffie-qa-skill.git
+          plugins: |
+            diffie@diffie
           prompt: |
             You are in PR testing mode (CI=true). Use the diffie-qa skill.
 
