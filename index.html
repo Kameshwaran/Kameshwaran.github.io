@@ -147,25 +147,53 @@
         }
 
         .stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 20px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
             background: rgba(255,255,255,0.1);
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 40px;
             color: white;
+        }
+
+        .stat-item {
             text-align: center;
+            flex-shrink: 0;
+            padding-right: 30px;
+            border-right: 1px solid rgba(255,255,255,0.25);
         }
 
         .stat-item h4 {
-            font-size: 1.8em;
+            font-size: 2.2em;
             margin-bottom: 5px;
+            line-height: 1;
         }
 
         .stat-item p {
             opacity: 0.9;
             font-size: 0.9em;
+        }
+
+        .profile-summary {
+            flex: 1;
+            line-height: 1.6;
+            font-size: 1em;
+            opacity: 0.95;
+        }
+
+        @media (max-width: 600px) {
+            .stats {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .stat-item {
+                padding-right: 0;
+                padding-bottom: 20px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.25);
+            }
         }
 
         @media (max-width: 768px) {
@@ -228,13 +256,8 @@
                 <h4>11+</h4>
                 <p>Years Experience</p>
             </div>
-            <div class="stat-item">
-                <h4>4</h4>
-                <p>Featured Posts</p>
-            </div>
-            <div class="stat-item">
-                <h4>500+</h4>
-                <p>Connections</p>
+            <div class="profile-summary">
+                From a scrappy Rails intern in 2013 to Software Project Manager at Codebrahma today — over a decade of shipping React, Node, and Rails for fintech, edtech, and healthcare clients. Equal parts engineer and team-builder, still happiest when I'm in the code.
             </div>
         </div>
 
