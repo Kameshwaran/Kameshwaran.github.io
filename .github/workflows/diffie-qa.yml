@@ -15,6 +15,13 @@ jobs:
       issues: write
       id-token: write
     steps:
+      - name: Generate Diffie bot token
+        id: diffie-bot
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.DIFFIE_APP_ID }}
+          private-key: ${{ secrets.DIFFIE_APP_PRIVATE_KEY }}
+
       - name: Get PR branch
         id: pr
         run: |
@@ -22,7 +29,7 @@ jobs:
           echo "ref=$(echo $PR_DATA | jq -r .head.ref)" >> $GITHUB_OUTPUT
           echo "number=${{ github.event.issue.number }}" >> $GITHUB_OUTPUT
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ steps.diffie-bot.outputs.token }}
 
       - uses: actions/checkout@v4
         with:
@@ -71,10 +78,16 @@ jobs:
           mkdir -p ~/.diffie
           echo '{"apiToken":"${{ secrets.DIFFIE_API_TOKEN }}","apiUrl":"https://api.diffie.ai"}' > ~/.diffie/credentials.json
 
+      - name: Export Diffie bot token for gh CLI
+        run: |
+          echo "${{ steps.diffie-bot.outputs.token }}" > $HOME/.diffie-gh-token
+          chmod 600 $HOME/.diffie-gh-token
+
       - name: Run Diffie QA
         uses: anthropics/claude-code-action@v1
         with:
           anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          github_token: ${{ steps.diffie-bot.outputs.token }}
           claude_args: --permission-mode bypassPermissions
           show_full_output: true
           plugin_marketplaces: |
